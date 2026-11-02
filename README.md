@@ -4,7 +4,7 @@ Runnable, bounded reporter and outlet research examples for the hosted [Reporter
 
 ## Run
 
-Use Node 20+ or Python 3.9+. The examples use standard libraries and need no package installation. Create a scoped API key in the [Reporters.io API-key dashboard](https://reporters.io/account/api-keys) while your Professional (Pro) subscription is active and set it through your shell's secret mechanism:
+Use Node 20+ or Python 3.9+. The examples use standard libraries and need no package installation. Create an API key in the [Reporters.io API-key dashboard](https://reporters.io/account/api-keys) while your Professional (Pro) subscription is active. Enter a name; all six API permissions are included automatically, with no automatic expiration. Accounts can have up to 10 active keys, and you can revoke keys you no longer need. Set the key through your shell's secret mechanism:
 
 ```bash
 export REPORTERS_API_KEY="YOUR_REPORTERS_API_KEY"
@@ -23,7 +23,7 @@ The canonical base is `https://reporters.io/api/v1`. Authentication uses `Author
 
 Node exports `request(path, options)`; Python exports `request(path, **options)`. Searches use POST JSON bodies. Profile, article, metadata and account lookups use GET. Read the [OpenAPI contract](https://reporters.io/api/v1/openapi.json) for supported fields and response schemas.
 
-Contact reveal is a separate, entitled action. Only call it after the user explicitly requests contact access; server entitlement and scopes still apply. The helpers additionally require `confirmContactReveal: true` (Node) or `confirm_contact_reveal=True` (Python). A caller can pass an `Idempotency-Key` when deliberately retrying the same reveal operation. Do not use a new key to retry an uncertain result automatically.
+Contact reveal is a separate, entitled action. Only call it after the user explicitly requests contact access; active Pro access and contact availability still apply. The helpers additionally require `confirmContactReveal: true` (Node) or `confirm_contact_reveal=True` (Python). A caller can pass an `Idempotency-Key` when deliberately retrying the same reveal operation. Do not use a new key to retry an uncertain result automatically.
 
 ```javascript
 // Explicitly requested, entitled contact access for one selected reporter.
@@ -38,7 +38,7 @@ Preserve IDs, source URLs, dates, availability and warnings. Missing fields do n
 
 ## Access changes
 
-Revoked or expired keys cannot authorize requests. Existing keys also stop working when the account loses active Professional (Pro) access. You can still manage and revoke existing keys after a downgrade. Treat a scope or subscription denial as a stopping condition. The documentation and public OpenAPI specification remain readable without a subscription.
+Revoked keys cannot authorize requests. Existing keys also stop working when the account loses active Professional (Pro) access. You can still manage and revoke existing keys after a downgrade. Treat an access or subscription denial as a stopping condition. The documentation and public OpenAPI specification remain readable without a subscription.
 
 ## Validate
 
