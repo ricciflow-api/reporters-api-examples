@@ -40,7 +40,7 @@ export async function request(path, {
   }
   const credential = key?.trim();
   if (!credential || /[\r\n]/.test(credential)) throw new Error('Set REPORTERS_API_KEY');
-  if (idempotencyKey !== undefined && !/^[\x21-\x7e]{1,128}$/.test(idempotencyKey)) {
+  if (idempotencyKey !== undefined && !/^[\x21-\x7e]{8,128}$/.test(idempotencyKey)) {
     throw new Error('Invalid idempotency key');
   }
   const url = new URL(basePath + path, origin);

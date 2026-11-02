@@ -44,7 +44,7 @@ def request(path, *, method="GET", params=None, body=None, key=None,
     credential = (key if key is not None else os.environ.get("REPORTERS_API_KEY", "")).strip()
     if not credential or "\r" in credential or "\n" in credential:
         raise ValueError("Set REPORTERS_API_KEY")
-    if idempotency_key is not None and not re.fullmatch(r"[\x21-\x7e]{1,128}", idempotency_key):
+    if idempotency_key is not None and not re.fullmatch(r"[\x21-\x7e]{8,128}", idempotency_key):
         raise ValueError("Invalid idempotency key")
     query = urllib.parse.urlencode({name: value for name, value in params.items() if value is not None})
     url = BASE_URL + path + ("?" + query if query else "")
