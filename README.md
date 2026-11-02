@@ -4,7 +4,7 @@ Runnable, bounded reporter and outlet research examples for the hosted [Reporter
 
 ## Run
 
-Use Node 20+ or Python 3.9+. The examples use standard libraries and need no package installation. Create an API key in the [Reporters.io API-key dashboard](https://reporters.io/account/api-keys) while your Professional (Pro) subscription is active. Enter a name; all six API permissions are included automatically, with no automatic expiration. Accounts can have up to 10 active keys, and you can revoke keys you no longer need. Set the key through your shell's secret mechanism:
+Use Node 20+ or Python 3.9+. The examples use standard libraries and need no package installation. Create an API key in the [Reporters.io API-key dashboard](https://reporters.io/developers/api/keys) while your Professional (Pro) subscription is active. Enter a name; all six API permissions are included automatically, with no automatic expiration. Accounts can have up to 10 active keys, and you can revoke keys you no longer need. Set the key through your shell's secret mechanism:
 
 ```bash
 export REPORTERS_API_KEY="YOUR_REPORTERS_API_KEY"
